@@ -13,7 +13,13 @@ When do users engage with the platform most?
 
 
 
-### Feature Engineering
+### Methodology
+
+The Data was extraxcted and cleaned using python
+
+several new features were derived using python
+
+visualization was created to analyze user behaviour, rating patterns , and the impact of genres on movie ratings.
 
 
 
