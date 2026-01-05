@@ -25,11 +25,22 @@ Visualization was created to analyze user behaviour, rating patterns , and the i
 ### Skills
 Python: Pandas, Numpy, Matplotlib
 
+###Limitations
+Majority of movies are not tagged limiting tag based analysis
+
+The dataset is from 1996-2018 so doesnt include recent trends or movie released.
+
 ### Result and Recommendation
 Ratings are mostly positive
+
 Higher activity occur on weekends and evenings which can guide recommendation timing
+
 multi-genre movies tend to recieve higher ratiings
 <img width="772" height="508" alt="image" src="https://github.com/user-attachments/assets/73d64517-215f-431e-b169-0fb640a93e26" />
 
 
-Recommendation: 
+#### Recommendation: 
+Optimize timing based on peak user activity times
+
+Encouraging tagging for deeper personalization.
+
