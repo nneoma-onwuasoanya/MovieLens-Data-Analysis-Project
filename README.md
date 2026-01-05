@@ -22,4 +22,14 @@ Several new features were derived using python
 Visualization was created to analyze user behaviour, rating patterns , and the impact of genres on movie ratings.
 
 
+### Skills
+Python: Pandas, Numpy, Matplotlib
 
+### Result and Recommendation
+Ratings are mostly positive
+Higher activity occur on weekends and evenings which can guide recommendation timing
+multi-genre movies tend to recieve higher ratiings
+<img width="772" height="508" alt="image" src="https://github.com/user-attachments/assets/73d64517-215f-431e-b169-0fb640a93e26" />
+
+
+Recommendation: 
