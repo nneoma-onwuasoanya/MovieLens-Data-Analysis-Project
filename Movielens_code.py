@@ -78,3 +78,78 @@ df['tag_count'] = df['tag_count'].fillna(0).astype(int)
 #view column
 df[['movieId','title','tag_count']].head()
 
+5. #TOP 10 MOST RATED MOVIE
+top_movies = (
+    df.groupby('title_without_year')['rating']
+      .count()
+      .sort_values(ascending=False)
+      .head(10)
+)
+
+top_movies
+
+# Finalize types
+num_cols = ['number_genres','multi_genre','rating_year','rating_month','rating_dow','rating_hour','tag_count']
+for c in num_cols:
+    df[c] = pd.to_numeric(df[c], errors='coerce')
+
+# STEP 6: EXPLORATORY DATA ANALYSIS
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(6,4))
+df['rating'].hist(bins=[0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,], edgecolor='black',color='blue')
+plt.title("Distribution of Ratings")
+plt.xlabel("Rating")
+plt.ylabel("Frequency")
+plt.show()
+
+year_avg = df.groupby('rating_year')['rating'].mean()
+
+plt.figure(figsize=(7,4))
+year_avg.plot(kind='line', marker='o', color='darkorange')
+plt.title("Average Rating by Rating Year")
+plt.xlabel("Rating Year")
+plt.ylabel("Average Rating")
+plt.show()
+
+year_avg.head()
+
+dow_avg = df.groupby('rating_dow')['rating'].mean()
+
+plt.figure(figsize=(6,4))
+dow_avg.plot(kind='bar', color='darkgreen')
+plt.title("Average Rating by Day of Week (0=Mon ... 6=Sun)")
+plt.xlabel("Day of the Week")
+plt.ylabel("Average Rating")
+plt.show()
+
+dow_avg
+
+multi_vs_single = df.groupby('multi_genre')['rating'].mean()
+
+plt.figure(figsize=(5,3))
+multi_vs_single.plot(kind='bar', color='darkred')
+plt.title("Average Rating: Single vs Multi-Genre")
+plt.xlabel("0 = Single Genre, 1 = Multi-Genre")
+plt.ylabel("Average Rating")
+plt.show()
+
+multi_vs_single
+
+release_year_avg = df.groupby('extracted_year')['rating'].mean().dropna()
+
+plt.figure(figsize=(8,4))
+release_year_avg.plot(kind='line', marker='o', color='purple')
+plt.title("Average Movie Rating by Release Year")
+plt.xlabel("Release Year")
+
+plt.figure(figsize=(8,4))
+top_movies.plot(kind='bar', color='brown')
+plt.title("Top 10 Most Rated Movies")
+plt.xlabel("Movie Title")
+plt.ylabel("Number of Ratings")
+plt.show()
+
+# STEP 7: EXPORT CLEANED DATA
+df.to_csv('cleaned_movielens_with_features.csv', index=False)
+
