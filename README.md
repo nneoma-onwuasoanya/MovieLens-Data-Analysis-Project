@@ -6,7 +6,9 @@ In this project stage, i successfully explored user behaviour, movie ratings, an
 Understanding user preferences and behavior is crucial for building an effective movie recommendation system. This analysis will help answer questions like:
 
 What factors influence how users rate movies?
+
 Do multi-genre movies get higher ratings than single-genre movies?
+
 When do users engage with the platform most?
 
 
