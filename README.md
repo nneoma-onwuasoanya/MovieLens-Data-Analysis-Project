@@ -1,6 +1,6 @@
 # Exploratory Data Analysis (EDA) on MovieLens-Dataset
 ## EXECUTIVE SUMMARY
-In this project, i successfully explored user behaviour, movie ratings, and trends to lay a foundationn for building a movie recommendation system. I merged disparate data sources and created new columns to enrich the information available for each user-movie interaction using python.This helped inform future model-building strategies and to understand how users interact with movies over time.
+In this project, i successfully explored user behaviour, movie ratings, and trends to lay a foundation for building a movie recommendation system. I merged disparate data sources and created new columns to enrich the information available for each user-movie interaction using python.This helped inform future model-building strategies and to understand how users interact with movies over time.
 
 ### Problem Statement
 Understanding user preferences and behavior is crucial for building an effective movie recommendation system. This analysis will help answer questions like:
