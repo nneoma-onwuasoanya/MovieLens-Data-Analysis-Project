@@ -25,7 +25,8 @@ Visualization was created to analyze user behaviour, rating patterns , and the i
 ### Skills
 Python: Pandas, Numpy, Matplotlib
 
-###Limitations
+### Limitations
+
 Majority of movies are not tagged limiting tag based analysis
 
 The dataset is from 1996-2018 so doesnt include recent trends or movie released.
