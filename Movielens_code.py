@@ -34,7 +34,8 @@ df.head()
 #import libraries
 import re
 import numpy as np
-#EXTRACT YEAR FROM MOVIE TITLE AND CONVERT YEAR TO INTEGER
+
+1. #EXTRACT YEAR FROM MOVIE TITLE AND CONVERT YEAR TO INTEGER
  def extract_year_from_title(title):
     m = re.search(r'\((\d{4})\)$', str(title))
     if m:
@@ -50,4 +51,30 @@ df['title_without_year'] = df['title'].apply(strip_year_from_title)
 #viw new columns
 df[['title','extracted_year','title_without_year']].head()
 
+#DEFINE THE GENRES, SPLIT WHERE '|'
+def split_genres(g):
+    return str(g).split('|')
+ 
+ 2. #COUNT AND CREATE NUMBER OF GENRES AND MULTI GENRE COLUMN
+df['number_genres'] = df['genres'].apply(lambda g: len(split_genres(g))).astype('Int64')
+df['multi_genre'] = (df['number_genres'] > 1).astype(int)
+#VIEW NEW COLUMN ( NUMBER_GENRES AND MULTI_GENRE)
+df[['genres','number_genres','multi_genre']].head()
+
+3. #EXTRACT YEAR, MONTH, DAY OF THE WEEK AND HOUR FROM TIMESTAMP, NEW COLUMNS
+df['rating_year']  = df['timestamp'].dt.year
+df['rating_month'] = df['timestamp'].dt.month
+df['rating_dow']   = df['timestamp'].dt.dayofweek   # 0=Monday
+df['rating_hour']  = df['timestamp'].dt.hour
+#check columns
+df[['timestamp','rating_year','rating_month','rating_dow','rating_hour']].head()
+
+4. #COUNT HOW MANY TAGS EACH MOVIE HAS AND CREATED A COLUMN
+tag_counts = tags.groupby('movieId', as_index=False)['tag'].count().rename(columns={'tag':'tag_count'})
+#MERGE WITH MOVIE DATA USING MOVIEID
+df = df.merge(tag_counts, on='movieId', how='left')
+#REPLACE MISSING VALUES AND CONVERT TO INTEGERS
+df['tag_count'] = df['tag_count'].fillna(0).astype(int)
+#view column
+df[['movieId','title','tag_count']].head()
 
